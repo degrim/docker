@@ -4,6 +4,7 @@ RUN apt-get -y update \
     && apt-get -y install python
 
 COPY index.yml /webserver/
+COPY dynatrace-agent-*.jar /webserver/
 COPY license.key /dynatrace/server/conf/dtlicense.key
 
 RUN sed -i '2 i cd /webserver; python -m SimpleHTTPServer 80 &' /run-process.sh && \
